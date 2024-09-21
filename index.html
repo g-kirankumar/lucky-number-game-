@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Number Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Lucky Number Game</h1>
+        <div class="setup">
+            <label for="playersCount">Number of Players:</label>
+            <input type="number" id="playersCount" min="1" max="10" value="1">
+        
+            <label for="enterNames">Do you want to enter player names?</label>
+            <select id="enterNames">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        
+            <!-- Max guess option -->
+            <label for="setMaxGuesses">Do you want to set a max guess limit?</label>
+            <select id="setMaxGuesses" onchange="toggleMaxGuesses()">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        
+            <!-- Input for max guesses -->
+            <div id="maxGuessesInput" class="hidden">
+                <label for="maxGuesses">Max Guesses:</label>
+                <input type="number" id="maxGuesses" min="1" value="10">
+            </div>
+        
+            <button onclick="setupGame()">Start Game</button>
+        </div>
+        
+        <!-- Input for player names if needed -->
+        <div id="playerNamesInput" class="hidden">
+            <h2>Enter Player Names:</h2>
+            <div id="namesContainer"></div>
+            <button onclick="startGame()">Start Rounds</button>
+        </div>
+        
+        <!-- Game section -->
+         
+        <div id="gameSection" class="hidden">
+            <h2 id="playerTurn"></h2>
+            <input type="number" id="guessInput" min="1" max="100" placeholder="Enter your guess">
+            <button onclick="submitGuess()">Submit Guess</button>
+            <p id="result"></p>
+            <p id="hint"></p>
+            <p id="remainingGuesses"></p> <!-- Display remaining guesses -->
+            <button class="reset-btn" onclick="resetGame()">Reset Game</button>
+        </div>
+
+        <div id="scoresSection" class="hidden">
+            <h2>Players' Scores</h2>
+            <ul id="scoresList"></ul>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
